@@ -39,4 +39,21 @@ public class Solution {
         }
         return ans;
     }
+    public int waysToSplitArray(int[] nums) {
+        int count=0;
+        long[] sumsList=new long[nums.length];
+        long cumulativeSum=0;
+        for (int i = 0; i < nums.length; i++) {
+            cumulativeSum+=nums[i];
+            sumsList[i]=cumulativeSum;
+        }
+        for (int i = 0; i < sumsList.length-1; i++) {
+            long leftSum=sumsList[i];
+            long rightSum=cumulativeSum-leftSum;
+            if (leftSum>=rightSum){
+                count++;
+            }
+        }
+    return count;
+    }
 }
